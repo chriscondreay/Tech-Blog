@@ -1,11 +1,11 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-// create our Comment model
-class Comment extends Model {}
+// create our Post model
+class Post extends Model {}
 
-// create fields/columns for Trip model
-Comment.init(
+// create fields/columns for Post model
+Post.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -13,7 +13,7 @@ Comment.init(
       primaryKey: true,
       autoIncrement: true
     },
-    comment: {
+    post: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -25,10 +25,18 @@ Comment.init(
         unique: false
       }
     },
-    post_id: {
+    band_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'post',
+        model: 'bands',
+        key: 'id',
+        unique: false
+      }
+    },
+    concert_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'concert',
         key: 'id',
         unique: false
       }
@@ -44,8 +52,8 @@ Comment.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'Comment'
+    modelName: 'post'
   }
 );
 
-module.exports = Comment;
+module.exports = Post;
