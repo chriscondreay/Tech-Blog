@@ -25,22 +25,6 @@ Post.init(
         unique: false
       }
     },
-    band_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'bands',
-        key: 'id',
-        unique: false
-      }
-    },
-    concert_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'concert',
-        key: 'id',
-        unique: false
-      }
-    },
     date_created: {
       type: DataTypes.DATE,
       allowNull: false,
